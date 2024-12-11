@@ -4,11 +4,18 @@
  */
 package Entities;
 
+import static Entities.Category.categories;
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
-class Product {
+public class Product {
+    // Creation of lists of products
+    public static ArrayList<Product> products = new ArrayList<>();
+    
+    
     private static int idCounter = 1;
     protected int id;
     protected String name;
@@ -50,6 +57,16 @@ class Product {
     public String toString() {
         return "ID: " + id + ", Name: " + name + ", Price: $" + price +
                (category != null ? ", Category: " + category : "");
+    }
+    
+        
+    
+    public static void initializeDefProd(){
+        products.add(new Book("1984", 9.99, categories.get(1), "George Orwell"));
+        products.add(new Book("Harry Potter and the philosopher stone", 7.99, categories.get(0), "Harper Lee"));
+        products.add(new Accessory("Bookmark", 1.50, categories.get(2), "Stationery"));
+        products.add(new Accessory("Reading Light", 12.99, categories.get(2), "Electronics")); // No category
+
     }
         
 }

@@ -7,7 +7,11 @@ package com.mycompany.booknook;
 import Entities.Admin;
 import java.util.Scanner;
 import Entities.User;
-import Controllers.MenuCenter;
+import Controllers.menuCenter;
+import Controllers.login;
+import Controllers.adminController;
+import Entities.Category;
+import Entities.Product;
 /**
  *
  * @author Admin
@@ -16,6 +20,8 @@ public class BookNook {
 
     public static void main(String[] args) {
         User.initializeDefUsers();
+        Category.initializeDefCat();
+        Product.initializeDefProd();
         Scanner scanner = new Scanner(System.in);
 
         // initial menu
@@ -30,7 +36,7 @@ public class BookNook {
 
             switch (choice) {
                 case 1: // register
-                    Admin.addNewUser();
+                    adminController.addNewUser();
                     break;
                 case 2:
                     /* Part E of group member B Enea Rina that implements the
@@ -41,16 +47,16 @@ public class BookNook {
                     String username = scanner.nextLine();
                     System.out.print("Enter Password: ");
                     String password = scanner.nextLine();
-                    boolean loginSuccess = User.login(username, password);
+                    boolean loginSuccess = login.login(username, password);
                 
                     if (loginSuccess) {
                         // Check if the logged-in user is an Admin
-                        if (User.getLoggedInUser() instanceof Admin) {
+                        if (login.getLoggedInUser() instanceof Admin) {
                             System.out.println("Admin privileges granted.");
-                            MenuCenter.AdminMenu(scanner, (Admin) User.getLoggedInUser());
+                            menuCenter.AdminMenu(scanner, (Admin) login.getLoggedInUser());
                         } else {
                             System.out.println("Regular user logged in.");
-                            MenuCenter.UserMenu(scanner);
+                            menuCenter.UserMenu(scanner);
                         }
                     }
                     break;

@@ -8,7 +8,7 @@ package Entities;
  *
  * @author Admin
  */
-class Book extends Product {
+public class Book extends Product {
     private String author;
 
     public Book(String name, double price, Category category, String author) {

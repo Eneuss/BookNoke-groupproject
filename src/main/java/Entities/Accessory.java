@@ -8,7 +8,7 @@ package Entities;
  *
  * @author Admin
  */
-class Accessory extends Product {
+public class Accessory extends Product {
     private String accessoryType;
 
     public Accessory(String name, double price, Category category, String accessoryType) {

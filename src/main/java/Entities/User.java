@@ -17,7 +17,6 @@ public class User {
     
     //list of the users subscribed to the program
     public static List<User> users = new ArrayList<>();
-    private static User loggedInUser = null;
 
     public User(String userName, String email, String password) {
         this.userName = userName;
@@ -63,42 +62,5 @@ public class User {
         return "User [Username=" + userName + ", Email=" + email + ", Password=" + password + "]";
     }
 
-    //Method that checks if a user is already logged in otherwise enables the login session if the credentials match
-    public static boolean login(String username, String password) {
-            if (loggedInUser != null) {
-                System.out.println("Error: A user is already logged in.");
-                return false;  //Prevent login if a user is already logged in
-            }
-
-            //Find the user with matching credentials
-            for (User user : users) {
-                user.toString();
-                if (user.userName.equals(username) && user.password.equals(password)) {
-                    loggedInUser = user;  //Set the logged-in user
-                    System.out.println("Login successful! Welcome " + username);
-                    return true;
-                }
-            }
-
-            System.out.println("Error: Invalid username or password.");
-            return false;  //Invalid credentials check
-        }
-
-        // Logout method
-        public static void logout() {
-            if (loggedInUser != null) {
-                System.out.println("Goodbye " + loggedInUser.userName + "!");
-                loggedInUser = null;
-            } else {
-                System.out.println("No user is logged in.");
-            }
-        }
-        
-
-        //Check the currently logged-in user
-        public static User getLoggedInUser() {
-            return loggedInUser;
-        }
-        
 
 }
