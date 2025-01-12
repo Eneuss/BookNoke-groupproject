@@ -21,14 +21,21 @@ public class Product {
     protected String name;
     protected double price;
     protected Category category;
+    protected int sales;
 
     public Product(String name, double price, Category category) {
         this.id = idCounter++;
         this.name = name;
         this.price = price;
         this.category = category;
+        sales = 0;
     }
 
+    public int getId() {
+        return id;
+    }
+    
+    
     public String getName() {
         return name;
     }
@@ -53,19 +60,30 @@ public class Product {
         this.category = category;
     }
     
+    public void setSales(int sale) {
+        this.sales= this.sales + sale;
+    }
+
+    public int getSales() {
+        return sales;
+    }
+    
+    
+    
     @Override
     public String toString() {
-        return "ID: " + id + ", Name: " + name + ", Price: $" + price +
-               (category != null ? ", Category: " + category : "");
+        return "ID: " + id + ", Name: " + name + ", Price: $" + price + ", Category: " + category + ", Sales: " + sales;
+               //(category != null ? ", Category: " + category : "");
     }
     
         
     
     public static void initializeDefProd(){
         products.add(new Book("1984", 9.99, categories.get(1), "George Orwell"));
+        products.add(new Book("test1", 10.99, categories.get(1), "George Orwell"));
         products.add(new Book("Harry Potter and the philosopher stone", 7.99, categories.get(0), "Harper Lee"));
-        products.add(new Accessory("Bookmark", 1.50, categories.get(2), "Stationery"));
-        products.add(new Accessory("Reading Light", 12.99, categories.get(2), "Electronics")); // No category
+        products.add(new Accessory("Bookmark", 1.50, categories.get(0), "Stationery"));
+        products.add(new Accessory("Reading Light", 12.99, categories.get(0), "Electronics")); // No category
 
     }
         

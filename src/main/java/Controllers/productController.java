@@ -11,6 +11,7 @@ import java.util.Scanner;
 import static Entities.Category.categories;
 import Entities.Product;
 import static Entities.Product.products;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,10 +34,10 @@ public class productController {
      for (int i = 1; i < categories.size(); i++) {
          System.out.println((i) + ". " + categories.get(i));
      }
-     int categoryIndex = scanner.nextInt() - 1;
+     int categoryIndex = scanner.nextInt();
      scanner.nextLine(); // Consume newline
 
-     if (categoryIndex < 1 || categoryIndex >= categories.size()) {
+     if (categoryIndex < 0 || categoryIndex >= categories.size()) {
          System.out.println("Invalid category selection.");
          return;
      }
@@ -78,6 +79,49 @@ public class productController {
                 System.out.println(product);
             }
         }
+    }
+    
+    
+    // Function made by Valerio Gerardi
+    public static ArrayList<Book> searchBook(Scanner scanner) {
+        ArrayList<Book> items = new ArrayList<>();
+        System.out.println("Search Book");
+        System.out.println("1. Search by Title");
+        System.out.println("2. Search by Author");
+        System.out.print("Choose an option: ");
+        
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter the keyword: ");
+        String keyword = scanner.nextLine();
+
+        boolean searchByTitle = (choice == 1);
+        boolean found = false;
+        int i = 1;
+        System.out.println("\nSearch Results:");
+        for (Product product : products) {
+            if (product instanceof Book) {
+                Book book = (Book) product;
+
+                // Check for title or author match
+                if ((searchByTitle && book.getName().equalsIgnoreCase(keyword)) ||
+                    (!searchByTitle && book.getAuthor().equalsIgnoreCase(keyword))) {
+                    System.out.println(i + ".  " + book.toString());
+                    i++;
+                    items.add(book);
+                    found = true;
+                }
+            }
+        }
+        
+
+        if (!found) {
+            System.out.println("No books found matching your search.");
+            return items;
+        }
+        
+        return items;
     }
 }
     
