@@ -5,6 +5,7 @@
 package Controllers;
 import java.util.Scanner;
 import Entities.Admin;
+import Controllers.Order;
 
 /**
  *
@@ -27,13 +28,37 @@ public class menuCenter {
             
             switch (choice) {
                 case 1:
+                    productController.searchBook(scanner);
                     break;
                 case 2:
+                    System.out.println("\n-----Buy-----");
+                    System.out.println("1. Buy book");
+                    System.out.println("2. Buy accessory");
+                    System.out.print("3. Return to Group member A menu ");
+                    System.out.print("\nSelect an option: ");
+
+                    int choiceProduct = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (choiceProduct){
+                        case 1:
+                            Order.buyBook(scanner);
+                            break;
+                        case 2:
+                            Order.buyAccessory(scanner);
+                            break;
+                        case 3:
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
                     break;
                 case 3:
+                    Order.orderHistory();
                     break;
                 case 4:
-                    break; // you can leave this as it is to exit this menu
+                    return; // you can leave this as it is to exit this menu
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
     }
@@ -52,7 +77,7 @@ public class menuCenter {
             
             int choice = scanner.nextInt();
             scanner.nextLine();
-
+            System.out.println("Questo e il primo menu: "+ choice);
             switch (choice) {
                 case 1:
                     System.out.println("\n---Inventory Update!---");
@@ -64,6 +89,7 @@ public class menuCenter {
                     System.out.print("Select an option: ");
                     int inventory = scanner.nextInt();
                     scanner.nextLine();
+                    System.out.println("Questo e il menu dei libri: "+ inventory);
                     switch (inventory) {
                         case 1:
                             productController.addBook(scanner);
@@ -79,7 +105,10 @@ public class menuCenter {
                         case 5:
                             System.out.println("Invalid selection!!!");
                             break;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 2:
                     System.out.println("\n---Login funtionalities---");
                     System.out.println("1. Register");
@@ -88,6 +117,7 @@ public class menuCenter {
                     System.out.print("Select an option: ");
                     int choiceLogin = scanner.nextInt();
                     scanner.nextLine();
+                    System.out.println("Questo e il menu login: "+ choiceLogin);
 
                     switch (choiceLogin) {
                         case 1: // register
@@ -120,14 +150,16 @@ public class menuCenter {
                         default:
                             System.out.println("Invalid choice. Please try again.");
                     }
+                    break;
                 case 3:
+                    System.out.println("Siamo qua");
                     adminController.viewAllUsers();
                     break;
                 case 4:
                     adminController.editUser(scanner);
                     break;
                 case 5:
-                    break;
+                    return;
                 default:
                     System.out.println("Invalid choice, please try again.");
                     break;
@@ -158,7 +190,9 @@ public class menuCenter {
                 case 3:
                     break;
                 case 4:
-                    break;  // you can leave this as it is to exit this menu
+                    return;  // you can leave this as it is to exit this menu
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
     }
