@@ -123,5 +123,92 @@ public class productController {
         
         return items;
     }
+    
+    
+     // Function made by Luis
+    
+    public static void modifyProduct(Scanner scanner) {
+        
+        //Dipslay products
+        if (products.isEmpty()) {
+            System.out.println("No products available to modify");
+            return;
+        }
+        
+        System.out.println("\n--- Modify Product ---");
+        System.out.println("Available Products:");
+        for (Product product : products) {
+             System.out.println(product.toString());
+        }
+        
+        //Select a product by ID
+        System.out.print("Enter the ID of the product to modify: ");
+        int productId = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        
+        Product selectedProduct = null;
+        for (Product product : products) {
+            if (product.getId() == productId) {
+                selectedProduct = product;
+                break;
+            }
+        }
+        
+        if (selectedProduct == null) {
+            System.out.println("Product with ID" + productId + " not found.");
+            return;
+        }
+        
+        // Input and validate new values
+        System.out.println("Modifying product: " + selectedProduct.toString());
+        String nameInput;
+        //Modify name
+        System.out.print("Enter new name (don't modify to keep:" + selectedProduct.getName() + "): ");
+        nameInput = scanner.nextLine();
+        if (!nameInput.isEmpty()) {
+            try {
+                selectedProduct.setName(nameInput);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid Name. Keeping current price.");
+            }
+        }
+        
+        //Modify price
+        System.out.print("\nEnter new price (current: $" + selectedProduct.getPrice() + "): ");
+        double newPrice;
+        String priceInput = scanner.nextLine();
+        if (!priceInput.isEmpty()) {
+            try {
+                newPrice = Double.parseDouble(priceInput);
+                selectedProduct.setPrice(newPrice);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid price. Keeping current price.");
+            }
+        }
+        
+        //Modify category
+        System.out.println("Available Categories:");
+        for (int i = 1; i < categories.size(); i++) {
+            System.out.println(i + ". " + categories.get(i).getName());
+        }
+        System.out.print("Enter new category index (current: " + selectedProduct.getCategory().getName() + "): ");
+        String categoryInput = scanner.nextLine();
+        if (!categoryInput.isEmpty()) {
+            try {
+                int categoryIndex = Integer.parseInt(categoryInput);
+                if (categoryIndex  >= 0 && categoryIndex < categories.size()) {
+                    selectedProduct.setCategory(categories.get(categoryIndex));            
+                } else {
+                    System.out.println("Invalid category index Keeping current category.");
+                }
+            }  catch (NumberFormatException e) {
+                System.out.println("Invalid input. Keeping current category.");
+            }
+        }
+        //Confirm update
+    
+        System.out.println("Product updated successfully: " + selectedProduct.toString());
+    } 
+
 }
     

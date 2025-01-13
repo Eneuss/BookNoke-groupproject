@@ -54,7 +54,7 @@ public class User {
         users.add(new User("Alice80","alice@gmail.com", "12345"));
         users.add(new User("Mark","Mark@gmail.com", "password"));
         
-        users.add(new Admin("enea","enea@gmail.com","12"));
+        users.add(new Admin("admin","admin@admin","admin"));
     }
     
     @Override

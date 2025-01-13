@@ -6,10 +6,11 @@ package com.mycompany.booknook;
 
 import java.util.Scanner;
 import Entities.User;
+
 import Controllers.menuCenter;
-import Controllers.productController;
 import Entities.Category;
 import Entities.Product;
+
 /**
  *
  * @author Admin
@@ -34,16 +35,15 @@ public class BookNook {
             scanner.nextLine();
 
             switch (choice) {
-                case 1: // register
+                case 1: 
                     menuCenter.groupMemberA(scanner);
                     break;
                 case 2:
                     menuCenter.groupMemberB(scanner);
                     break;
-                    
                 case 3:
                     menuCenter.groupMemberC(scanner);
-                    return ;
+                    break ;
                 case 4:
                     return;
                 default:

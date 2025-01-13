@@ -41,11 +41,6 @@ public class Order {
     }
 
     
-
-    
-
-    
-    
     public static void buyBook(Scanner scanner){
         ArrayList<Book> book = productController.searchBook(scanner);
         if (book.isEmpty()){
