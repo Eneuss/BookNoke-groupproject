@@ -168,10 +168,10 @@ public class menuCenter {
     }
     
     
-    // Part of Luis 
+    // Part of Luis Antonio
     public static void groupMemberC(Scanner scanner) {
         while(true) {
-            System.out.println("\nGroup member A 'Gerardi Valerio' functionalities:");
+            System.out.println("\nGroup member C 'Luis Antonio' functionalities:");
             System.out.println("1. List of products");
             System.out.println("2. Signup account");
             System.out.println("3. Modify products");
@@ -183,13 +183,37 @@ public class menuCenter {
             
             switch (choice) {
                 case 1:
+                    productController.viewAllProducts();
                     break;
                 case 2:
                     adminController.addNewUser();  // Enea and Luis share this function
                     break;
                 case 3:
+                    System.out.print("\nDefault credentials: admin | admin");
+                    System.out.print("\nEnter Username: ");
+                    String username = scanner.nextLine();
+                    System.out.print("Enter Password: ");
+                    String password = scanner.nextLine();
+                    boolean loginSuccess = login.login(username, password);
+                
+                    if (loginSuccess) {
+                        // Check if the logged-in user is an Admin
+                        if (login.getLoggedInUser() instanceof Admin) {
+                            System.out.println("\nAdmin privileges granted.");
+                            productController.modifyProduct(scanner);
+                        } else {
+                            System.out.println("\nRegular users cannot access this section.");
+                        }
+                    }
+                    
+                    if (loginSuccess){
+                        login.logout();
+                    }
+                    
+                    
                     break;
                 case 4:
+                    
                     return;  // you can leave this as it is to exit this menu
                 default:
                     System.out.println("Invalid choice. Please try again.");
