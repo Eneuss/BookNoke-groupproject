@@ -51,9 +51,8 @@ public class User {
     
     //Method to set some default users
     public static void initializeDefUsers(){
-        users.add(new User("Alice80","alice@gmail.com", "12345"));
+        users.add(new User("Alice","alice@gmail.com", "12345"));
         users.add(new User("Mark","Mark@gmail.com", "password"));
-        
         users.add(new Admin("admin","admin@admin","admin"));
     }
     

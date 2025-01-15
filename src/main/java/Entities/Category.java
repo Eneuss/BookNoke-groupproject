@@ -33,8 +33,11 @@ public class Category {
     }
     
     public static void initializeDefCat(){
-        categories.add(new Category("Accessory")); //0
-        categories.add(new Category("Fantasy")); //1
-        categories.add(new Category("Novel")); //2
+        categories.add(new Category("Accessory")); //category ID: 0
+        categories.add(new Category("Fantasy"));   //category ID: 1
+        categories.add(new Category("Novel"));     //Category ID: 2
+        categories.add(new Category("Science Fiction")); //Category ID: 3
+        categories.add(new Category("Mystery"));       //Category ID: 4
+        categories.add(new Category("Non-Fiction"));   // Category ID: 5
     }
 }
