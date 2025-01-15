@@ -72,7 +72,8 @@ public class menuCenter {
             System.out.println("2. Log in as admin or regular user");
             System.out.println("3. List of all users");
             System.out.println("4. Change details of an active user in the system");
-            System.out.print("5. Return to Group members menu ");
+            System.out.println("5. Delete an active user in the system");
+            System.out.print("6. Return to Group members menu ");
             System.out.print("\nSelect an option: ");
             
             int choice = scanner.nextInt();
@@ -101,9 +102,6 @@ public class menuCenter {
                             categoryController.addCategory(scanner);
                             break;
                         case 4:
-                            break;
-                        case 5:
-                            System.out.println("Invalid selection!!!");
                             break;
                         default:
                             System.out.println("Invalid choice. Please try again.");
@@ -158,7 +156,11 @@ public class menuCenter {
                 case 4:
                     adminController.editUser(scanner);
                     break;
+                    
                 case 5:
+                    adminController.deleteUser(scanner);
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Invalid choice, please try again.");
