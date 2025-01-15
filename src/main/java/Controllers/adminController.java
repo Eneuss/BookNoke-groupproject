@@ -52,6 +52,7 @@ public class adminController {
     }
     
     //Method to view all the users present in the program
+    //Made by enea rina
     public static void viewAllUsers() {
         System.out.println("\nList of All Users:");
         for (User user : users) {
@@ -61,6 +62,7 @@ public class adminController {
     }
     
     //Method to edit the credentials of a selected user
+    // Made by enea rina
     public static void editUser(Scanner scanner) {
         System.out.print("Enter the username of the user to edit: ");
         String targetUsername = scanner.nextLine();

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class productController {
-    // Method to add a new book
+    // Method to add a new book created by Enea Rina member B
     public static void addBook(Scanner scanner) {
      System.out.print("Enter the book name: ");
      String name = scanner.nextLine();
@@ -49,7 +49,7 @@ public class productController {
      System.out.println("Book added successfully with ID: " + (products.size()));
     }
     
-        //Method to add a new accessory
+        //Method to add a new accessory made by Enea Rina
     public static void addAccessory(Scanner scanner) {
         System.out.print("Enter the accessory name: ");
         String name = scanner.nextLine();
@@ -69,7 +69,7 @@ public class productController {
     }
 
 
-    // Method to view all products
+    // Method to view all products created by Luis group member C
     public static void viewAllProducts() {
         if (products.isEmpty()) {
             System.out.println("No products available.");

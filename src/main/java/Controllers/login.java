@@ -9,7 +9,7 @@ import static Entities.User.users;
 
 /**
  *
- * @author Admin
+ * @author Enea Rina
  */
 public class login {
     private static User loggedInUser = null;
