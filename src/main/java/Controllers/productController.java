@@ -69,7 +69,7 @@ public class productController {
     }
 
 
-    // Method to view all products created by Luis group member C
+    // Method to view all products
     public static void viewAllProducts() {
         if (products.isEmpty()) {
             System.out.println("No products available.");
@@ -125,7 +125,7 @@ public class productController {
     }
     
     
-     // Function made by Luis
+     
     
     public static void modifyProduct(Scanner scanner) {
         
